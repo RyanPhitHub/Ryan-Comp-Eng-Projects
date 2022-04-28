@@ -1,5 +1,4 @@
 ```c
-
 #include    "xc.h"              // Microchip XC8 compiler include file
 #include    "stdint.h"          // Include integer definitions
 #include    "stdbool.h"         // Include Boolean (true/false) definitions
@@ -27,21 +26,45 @@ int main(void)
         // SW2 is the the trigger for the blaster
         if(SW2 == 0)
         {
-            delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
-            if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
+            if(semiAuto == false)
             {
-                delayCycles = resetDelay;
+                for(char singleShot = 0; singleShot < 45; singleShot++) // Fires 1 full blast if button is tapped
+                {
+                    delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
+                    if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
+                    {
+                        delayCycles = resetDelay;
+                    }
+                    for(char soundlength = 0; soundlength <= fireRate; soundlength++) // Loops the blast for a duration
+                    {
+                        BEEPER = !BEEPER;
+                        for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
+                        {}
+                    }
+                    
+                }
+                semiAuto == true;
+                
             }
-            for(char soundlength = 0; soundlength <= fireRate; soundlength++) // Loops the blast for a duration
+            else if(semiAuto == true)
             {
-                BEEPER = !BEEPER;
-                for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
-                {}
+                delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
+                if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
+                {
+                    delayCycles = resetDelay;
+                }
+                for(char soundlength = 0; soundlength <= fireRate; soundlength++) // Loops the blast for a duration
+                {
+                    BEEPER = !BEEPER;
+                    for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
+                    {}
+                }
             }
         }
         else
         {
             delayCycles = resetDelay; // resets delay; every new click starts from the starting pitch
+            semiAuto = false;
         }
         if(SW3 == 0 && SWPressed == false) // Increases "fireRate" by 1- lowers firing speed
         {
