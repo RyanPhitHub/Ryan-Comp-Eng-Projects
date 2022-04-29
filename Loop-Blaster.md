@@ -43,7 +43,7 @@ int main(void)
     UBMP4_config();             // Configure on-board UBMP4 I/O devices
 	
     while(1)
-    {
+	{
         if(SW2 == 0)
         {
             LATC = 0b11110000;
@@ -57,14 +57,18 @@ int main(void)
         }
         if(SW3 == 0 && SWPressed == false) // Increases "fireRate" by 1- lowers firing speed
         {
+            __delay_ms(50);
             fireRate++;
             SWPressed = true;
+           
         }
         else if(SW4 == 0 && SWPressed == false) // Decreases "fireRate" by 1- increases firing speed
         {
+            __delay_ms(50);
             fireRate--;
             SWPressed = true;
         }
+
         if (SW3 == 1 && SW4 == 1 && SWPressed) // Allows SW3/SW4 to work again after releasing their buttons
         {
             SWPressed = false;
@@ -73,6 +77,7 @@ int main(void)
         {
             fireRate = resetFireRate;
         }
+
         if(SW5 == 0) // manual fireRate reset to default
         {
             fireRate = 20;
@@ -84,5 +89,6 @@ int main(void)
         }
     }
 }
+
 
  ```
