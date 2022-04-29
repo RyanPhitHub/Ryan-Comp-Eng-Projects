@@ -28,6 +28,7 @@ int main(void)
         {
             if(semiAuto == false)
             {
+                LATC = 0b11110000;
                 for(char singleShot = 0; singleShot < 45; singleShot++) // Fires 1 full blast if button is tapped
                 {
                     delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
@@ -44,10 +45,12 @@ int main(void)
                     
                 }
                 semiAuto == true;
+                LATC = 0b00000000;
                 
             }
             else if(semiAuto == true)
             {
+                LATC = 0b11110000;
                 delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
                 if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
                 {
@@ -59,6 +62,7 @@ int main(void)
                     for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
                     {}
                 }
+                LATC = 0b00000000;
             }
         }
         else
@@ -91,15 +95,6 @@ int main(void)
         {
             fireRate = 20;
         }
-        if(SW2 == 0 && delayCycles == resetDelay) // LEDs flash every blast
-        {
-            LATC = 0b11110000;
-        }
-        else
-        {
-            LATC = 0b00000000;
-        }
-        
         // Activate bootloader if SW1 is pressed..
         if(SW1 == 0)
         {
@@ -107,4 +102,6 @@ int main(void)
         }
     }
 }
-```
+
+
+ ```
