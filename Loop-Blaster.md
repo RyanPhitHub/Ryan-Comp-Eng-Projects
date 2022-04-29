@@ -12,9 +12,30 @@
  int delayCycles = 255; // Delay between each ocsilation of the beeper (controls pitch)
  char resetDelay = 255; // The starting pitch of each blast
  int maxDelay = 700; // How low the pitch is at the end of each blast
- char fireRate = 19; // How fast the blasts repeat- firerate 
+ char fireRate = 20; // How fast the blasts repeat- firerate
+ char resetFireRate = 20;
  bool SWPressed = false; // Tool to check if certain switches are pressed
- bool semiAuto = false; // Tool to check if you're holding or tapping trigger
+
+ // Function(s)
+ void gunShot()
+ {
+    for(char singleShot = 0; singleShot < 45; singleShot++) // Fires 1 full blast if button is tapped
+    {
+        delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
+        if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
+        {
+            delayCycles = resetDelay;
+        }
+        for(char soundlength = 0; soundlength <= fireRate; soundlength++) // Loops the blast for a duration
+        {
+            BEEPER = !BEEPER;
+            for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
+            {}
+        }
+    }       
+                    
+                
+ }
 
 int main(void)
 {
@@ -22,75 +43,36 @@ int main(void)
     UBMP4_config();             // Configure on-board UBMP4 I/O devices
 	
     while(1)
-	{
-        // SW2 is the the trigger for the blaster
+    {
         if(SW2 == 0)
         {
-            if(semiAuto == false)
-            {
-                LATC = 0b11110000;
-                for(char singleShot = 0; singleShot < 45; singleShot++) // Fires 1 full blast if button is tapped
-                {
-                    delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
-                    if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
-                    {
-                        delayCycles = resetDelay;
-                    }
-                    for(char soundlength = 0; soundlength <= fireRate; soundlength++) // Loops the blast for a duration
-                    {
-                        BEEPER = !BEEPER;
-                        for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
-                        {}
-                    }
-                    
-                }
-                semiAuto == true;
-                LATC = 0b00000000;
-                
-            }
-            else if(semiAuto == true)
-            {
-                LATC = 0b11110000;
-                delayCycles += 10; // Increases delay between oscillation (changes pitch)- gives the blasts a dynamic sound
-                if(delayCycles >= maxDelay) // Delay resets; starts the next blast 
-                {
-                    delayCycles = resetDelay;
-                }
-                for(char soundlength = 0; soundlength <= fireRate; soundlength++) // Loops the blast for a duration
-                {
-                    BEEPER = !BEEPER;
-                    for (int pew = 0; pew <= delayCycles; pew++) // Loops nothing; creates delay between oscillations
-                    {}
-                }
-                LATC = 0b00000000;
-            }
+            LATC = 0b11110000;
+            gunShot();
+            LATC = 0b00000000;
+            __delay_ms(25);
         }
         else
         {
             delayCycles = resetDelay; // resets delay; every new click starts from the starting pitch
-            semiAuto = false;
         }
         if(SW3 == 0 && SWPressed == false) // Increases "fireRate" by 1- lowers firing speed
         {
             fireRate++;
             SWPressed = true;
-           
         }
         else if(SW4 == 0 && SWPressed == false) // Decreases "fireRate" by 1- increases firing speed
         {
             fireRate--;
             SWPressed = true;
         }
-
         if (SW3 == 1 && SW4 == 1 && SWPressed) // Allows SW3/SW4 to work again after releasing their buttons
         {
             SWPressed = false;
         }
-        if(fireRate <= 0 || fireRate >= 255) // Stops fireRate from exceeding 8-bit limit; resets fireRate to default
+        if(fireRate < 1 || fireRate > 255) // Stops fireRate from exceeding 8-bit limit; resets fireRate to default
         {
-            fireRate = 20;
+            fireRate = resetFireRate;
         }
-
         if(SW5 == 0) // manual fireRate reset to default
         {
             fireRate = 20;
@@ -102,6 +84,5 @@ int main(void)
         }
     }
 }
-
 
  ```
