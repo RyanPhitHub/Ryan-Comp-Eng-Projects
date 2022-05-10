@@ -8,26 +8,54 @@
 // TODO Set linker ROM ranges to 'default,-0-7FF' under "Memory model" pull-down.
 // TODO Set linker code offset to '800' under "Additional options" pull-down.
 
-// Program variable definitions
-int delayCycles = 7000;
-int resetDelay = 7000;
-int maxDelay = 11000;
+// Program variable/definitions
+#define C4 183465 / 16
+#define Db4 173172 / 16
+#define D4 163454 / 16
+#define Eb4 154276 / 16
+#define E4 145617 / 16
+#define F4 137445 / 16
+#define Gb4 129733 / 16
+#define G4 122448 / 16
+#define Ab4 115579 / 16
+#define A4 109090 / 16
+#define Bb4 102968 / 16
+#define B4 97189 / 16
+#define C5 91734 / 64
+#define Db5 166584 / 64
+#define D5 161725 / 64
+#define Eb5 77139 / 64
+#define E5 72810 / 64
+#define F5 68722 / 64
+#define Gb5 64865 / 64
+#define G5 61225 / 64
+#define Ab5 57788 / 64
+#define A5 54545 / 64
+#define Bb5 51483 / 64
+#define B5 48594 / 64
+#define C6 45867 / 64
+
+
 //Functions
-void saberHum()
+void playNote(int duration, unsigned int originNote)
 {
-    delayCycles += 250;
-    if(delayCycles >= maxDelay) // Delay resets; starts the next hum
+    for(unsigned int x = 0; x != duration; x++)
     {
-         delayCycles = resetDelay;
-    }
-    for(char humLength = 2; humLength != 0; humLength--)
-    {
+        unsigned int cycleIndex = x;
+        unsigned int note = cycleIndex * 10 + originNote;
         BEEPER = !BEEPER;
-        for( int humPitch = 0; humPitch <= delayCycles; humPitch++)
-        {}
+        for(unsigned int y = 0; y < note; y++){}
     }
 }
 
+void saberHum()
+{
+    for(char i = 0; i < 4; i++)
+    {
+        playNote(30, C4);
+    }
+    playNote(50, D4);
+}
 
 
 int main(void)
@@ -43,20 +71,19 @@ int main(void)
         unsigned char lightSensorRead = ADC_read();//ADC_read_channel(ANQ1); closest hand: 11001110 close hand: 11001010 -> 11001100 anything else: <11001100
         //ADC_select_channel
         
-        if(lightSensorRead < 0b11001100)
+        if(SW2 == 0)//(lightSensorRead < 0b11001100)
         {
             saberHum();
-            LATC = 0b0000000;
         }
-        else if(lightSensorRead >= 0b11001100 && lightSensorRead < 0b11001110)
+        else if(SW3 == 0)//(lightSensorRead >= 0b11001100 && lightSensorRead < 0b11001110)
         {
-            __delay_ms(100);
-            LATC = 0b00100000;
+            BEEPER = !BEEPER;
+            __delay_us(1517);
+            
         }
         else
         {
-            __delay_ms(100);
-            LATC = 0b01000000;
+      
         }
        
         // Activate bootloader if SW1 is pressed.
@@ -66,5 +93,6 @@ int main(void)
         }
     }
 }
+
 
 ```
