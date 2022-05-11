@@ -8,7 +8,11 @@
 // TODO Set linker ROM ranges to 'default,-0-7FF' under "Memory model" pull-down.
 // TODO Set linker code offset to '800' under "Additional options" pull-down.
 
-// Program variable/definitions
+// Variables
+
+bool swung = true;
+bool stabbed = true;
+// Macros
 #define C4 183465 / 16
 #define Db4 173172 / 16
 #define D4 163454 / 16
@@ -37,12 +41,11 @@
 
 
 //Functions
-void playNote(int duration, unsigned int originNote)
+void playNote(int duration, unsigned int originNote, char noteSlope)
 {
     for(unsigned int x = 0; x != duration; x++)
     {
-        unsigned int cycleIndex = x;
-        unsigned int note = cycleIndex * 10 + originNote;
+        unsigned int note = x * noteSlope + originNote;
         BEEPER = !BEEPER;
         for(unsigned int y = 0; y < note; y++){}
     }
@@ -50,13 +53,29 @@ void playNote(int duration, unsigned int originNote)
 
 void saberHum()
 {
-    for(char i = 0; i < 4; i++)
+    for(char i = 0; i < 2; i++)
     {
-        playNote(30, C4);
+        playNote(30, C4, 10);
     }
-    playNote(50, D4);
+    playNote(60, Eb4, 10);
 }
 
+void saberSwing()
+{
+    playNote(10, G4, 20);
+    playNote(10, Ab4, 20);
+    playNote(80, F4, 30);
+}
+
+void saberStab()
+{
+    for(char i = 0; i < 8; i++)
+    {
+        playNote(10, G5, 20);
+        playNote(10, C6, 20);
+    }
+    playNote(150, C5, 30);
+}
 
 int main(void)
 {
@@ -71,19 +90,22 @@ int main(void)
         unsigned char lightSensorRead = ADC_read();//ADC_read_channel(ANQ1); closest hand: 11001110 close hand: 11001010 -> 11001100 anything else: <11001100
         //ADC_select_channel
         
-        if(SW2 == 0)//(lightSensorRead < 0b11001100)
+        if(lightSensorRead < 0b11001100)
         {
             saberHum();
+            swung = true;
+            stabbed = true;
         }
-        else if(SW3 == 0)//(lightSensorRead >= 0b11001100 && lightSensorRead < 0b11001110)
+        else if(lightSensorRead >= 0b11001100 && lightSensorRead < 0b11001110 && swung == true)
         {
-            BEEPER = !BEEPER;
-            __delay_us(1517);
+            saberSwing();
+            swung = false;
             
         }
-        else
+        else if(stabbed == true)
         {
-      
+            saberStab();
+            stabbed = false;
         }
        
         // Activate bootloader if SW1 is pressed.
