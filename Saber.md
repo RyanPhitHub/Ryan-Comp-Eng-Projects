@@ -1,5 +1,6 @@
 ```c
 #include    "xc.h"              // Microchip XC8 compiler include file
+#include    "xc.h"              // Microchip XC8 compiler include file
 #include    "stdint.h"          // Include integer definitions
 #include    "stdbool.h"         // Include Boolean (true/false) definitions
 
@@ -9,9 +10,9 @@
 // TODO Set linker code offset to '800' under "Additional options" pull-down.
 
 // Variables
-
-bool swung = true;
-bool stabbed = true;
+unsigned char stabCount = 0;
+unsigned char swingCount = 0;
+bool saberStatus = false;
 // Macros
 #define C4 183465 / 16
 #define Db4 173172 / 16
@@ -62,9 +63,9 @@ void saberHum()
 
 void saberSwing()
 {
-    playNote(10, G4, 20);
-    playNote(10, Ab4, 20);
-    playNote(80, F4, 30);
+    playNote(15, A4, 20);
+    playNote(15, Bb4, 20);
+    playNote(90, G4, 30);
 }
 
 void saberStab()
@@ -89,23 +90,44 @@ int main(void)
 	{
         unsigned char lightSensorRead = ADC_read();//ADC_read_channel(ANQ1); closest hand: 11001110 close hand: 11001010 -> 11001100 anything else: <11001100
         //ADC_select_channel
-        
-        if(lightSensorRead < 0b11001100)
+        LATC = lightSensorRead;
+        if(SW4 == 0)
         {
+            LATC = lightSensorRead << 4;
+        }
+        if(SW2 == 0 && saberStatus == false)
+        {
+            saberStatus = true;
+        }
+        else if(SW2 == 0 && saberStatus == true)
+        {
+            saberStatus = false;
+        }
+        if(saberStatus == true)
+        {
+            if(lightSensorRead >= 0b11001100 && lightSensorRead < 0b11001110)
+            {
+                swingCount++;
+                if(swingCount >= 5)
+                {
+                    saberSwing();
+                }
+                swingCount = 0; 
+            }
+            else if(lightSensorRead > 0b11001111)
+            {
+                stabCount++;
+                if(stabCount >= 5)
+                {
+                    saberStab();
+                    stabCount = 0;
+                }
+                else
+                {
+                    stabCount = 0;
+                }
+            }
             saberHum();
-            swung = true;
-            stabbed = true;
-        }
-        else if(lightSensorRead >= 0b11001100 && lightSensorRead < 0b11001110 && swung == true)
-        {
-            saberSwing();
-            swung = false;
-            
-        }
-        else if(stabbed == true)
-        {
-            saberStab();
-            stabbed = false;
         }
        
         // Activate bootloader if SW1 is pressed.
@@ -115,6 +137,8 @@ int main(void)
         }
     }
 }
+
+
 
 
 ```
