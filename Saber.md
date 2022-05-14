@@ -9,9 +9,10 @@
 // TODO Set linker code offset to '800' under "Additional options" pull-down.
 
 // Variables
-bool saberStatus = false;
-// Macros
-#define C4 183465 / 16
+bool saberStatus = false; //Check if lightsaber is on or off
+
+// Macros for note periods (First octave is modified to be lower)
+#define C4 183465 / 16 
 #define Db4 173172 / 16
 #define D4 163454 / 16
 #define Eb4 154276 / 16
@@ -39,7 +40,7 @@ bool saberStatus = false;
 
 
 //Functions
-void playNote(int duration, unsigned int originNote, char noteSlope)
+void playNote(int duration, unsigned int originNote, char noteSlope) //Play note for duration and degree of slide
 {
     for(unsigned int x = 0; x != duration; x++)
     {
@@ -49,7 +50,7 @@ void playNote(int duration, unsigned int originNote, char noteSlope)
     }
 }
 
-void saberHum()
+void saberHum() //Humming noise of lighsaber
 {
     for(char i = 0; i < 2; i++)
     {
@@ -58,51 +59,77 @@ void saberHum()
     playNote(60, Eb4, 10);
 }
 
-void saberSwing()
+void saberSwing() //Swinging noise of lightsaber
 {
-    playNote(15, A4, 20);
-    playNote(15, Bb4, 20);
-    playNote(90, G4, 30);
+    playNote(15, B4, 20);
+    playNote(30, A4, 20);
+    playNote(30, Gb4, 30);
 }
 
-void saberStab()
+void saberContact() //Hitting noise of lightsaber
 {
     for(char i = 0; i < 8; i++)
     {
-        playNote(10, G5, 20);
+        playNote(8, Ab5, 20);
         playNote(10, C6, 20);
     }
-    playNote(150, C5, 30);
+    playNote(200, C5, 30);
+}
+
+void saberOn() //Sound of lightsaber turning on
+{
+    for(char i = 0; i < 8; i++)
+    {
+        playNote(8, Ab5, 25);
+        playNote(8, B5, 20);
+    }
+    playNote(250, C5, 20);
+    playNote(150, Bb4, 20);
+}
+
+void saberOff() //Sound of lightsaber turning off
+{
+    playNote(20, G4, 5);
+    playNote(40, G4, -(1 / 100));
+    playNote(20, A4, 1);
+    for(char i = 0; i < 8; i++)
+    {
+        playNote(10, C6, 25);
+        playNote(10, A5, 20);
+    }
+    playNote(200, G5, 20);
+    playNote(10, Gb5, 20);
+
+
 }
 
 int main(void)
 {
     OSC_config();               // Configure internal oscillator for 48 MHz
     UBMP4_config();             // Configure on-board UBMP4 I/O devices
-    ADC_config();
-	
-    ADC_select_channel(ANQ1);
 
     while(1)
 	{
-        if(SW2 == 0 && saberStatus == false)
+        if(SW2 == 0) //Turn saber on when SW2 is pressed
         {
+            saberOn();
             saberStatus = true;
-        }
-        else if(SW2 == 0 && saberStatus == true)
-        {
-            saberStatus = false;
         }
         while(saberStatus == true)
         {
             saberHum();
-            if(SW4 == 0)
+            if(SW2 == 0) //Turn off if SW2 is pressed again
+            {
+                saberOff();
+                saberStatus = false;
+            }
+            else if(SW4 == 0) //Swing saber if SW4 is pressed
             {
                 saberSwing();
             }
-            else if(SW5 == 0)
+            else if(SW5 == 0) //Saber is touching something when SW5 is pressed
             {
-                saberStab();
+                saberContact();
             }
         }
        
