@@ -7,8 +7,8 @@ Mr. Lam gave me 2 new beepers/speakers, and an accelerometer. I'm happy with how
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - soldered wires onto the new speaker and then soldered it onto my UBMP4  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - tested the sound of the new speaker with my [blaster code](https://github.com/RyanPhitHub/Ryan-Comp-Eng-Projects/blob/706510888d710a99c2e0921ca4e99c50fcff2e93/Loop-Blaster.md)
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Setbacks and Concerns:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - after soldering the new speaker to the board, one of the wires snapped :,( , but I'm hoping   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - after soldering the new speaker to the board, [one of the wires snapped :,(](https://user-images.githubusercontent.com/99211784/170848646-4abf5f6e-219c-436b-b169-4499ec502a3a.JPG) , but I'm hoping   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; that's just a bad wire or I damaged it while stripping it  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - my hands have been really shakey recently, I might have to see a doctor since soldering may become dangerous
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - my hands have been really shakey recently, I might have to see a doctor since soldering may become dangerous  
 
-<img src="https://user-images.githubusercontent.com/99211784/170847629-afdf5c39-cd4f-4910-b6e0-fabe8f9bc54a.JPG" width= 100
+<img src="https://user-images.githubusercontent.com/99211784/170848646-4abf5f6e-219c-436b-b169-4499ec502a3a.JPG" width="100" /> <img src="https://user-images.githubusercontent.com/99211784/170848730-1a4034b7-1c10-4520-b986-54b836b943e4.JPG" width="100" />
