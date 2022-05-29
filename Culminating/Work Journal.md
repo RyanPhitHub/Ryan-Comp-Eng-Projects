@@ -10,5 +10,7 @@ Mr. Lam gave me 2 new beepers/speakers, and an accelerometer. I'm happy with how
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - after soldering the new speaker to the board, [one of the wires snapped :,(](https://user-images.githubusercontent.com/99211784/170848646-4abf5f6e-219c-436b-b169-4499ec502a3a.JPG) , but I'm hoping   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; that's just a bad wire or I damaged it while stripping it  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - my hands have been really shakey recently, I might have to see a doctor since soldering may become dangerous  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I'm having trouble understanding which pins I need to solder on my accelerometer; I'm using [this document](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL345.pdf) for reference but I feel  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; like the engineer and physics vocubulary is way too high level and I'm going nowhere with it   
 
 <img src="https://user-images.githubusercontent.com/99211784/170848646-4abf5f6e-219c-436b-b169-4499ec502a3a.JPG" width="100" /> <img src="https://user-images.githubusercontent.com/99211784/170848730-1a4034b7-1c10-4520-b986-54b836b943e4.JPG" width="100" />
