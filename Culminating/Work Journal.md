@@ -11,6 +11,4 @@ Mr. Lam gave me 2 new beepers/speakers, and an accelerometer. I'm happy with how
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; that's just a bad wire or I damaged it while stripping it  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - my hands have been really shakey recently, I might have to see a doctor since soldering may become dangerous
 
- 
-
-
+<img src="https://user-images.githubusercontent.com/99211784/170847629-afdf5c39-cd4f-4910-b6e0-fabe8f9bc54a.JPG" width= 100
