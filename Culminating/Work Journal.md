@@ -14,3 +14,19 @@ Mr. Lam gave me 2 new beepers/speakers, and an accelerometer. I'm happy with how
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; like the engineer and physics vocubulary is way too high level and I'm going nowhere with it   
 
 <img src="https://user-images.githubusercontent.com/99211784/170848646-4abf5f6e-219c-436b-b169-4499ec502a3a.JPG" width="100" /> <img src="https://user-images.githubusercontent.com/99211784/170848730-1a4034b7-1c10-4520-b986-54b836b943e4.JPG" width="100" />
+
+### Day 2: June. 1, 2022  
+I've been spending the last few days trying to understand the source code for programming the ADXL345. At first, I was reading through [this code](https://github.com/kaanakgundogdu/adxl345-pic18f4550/blob/master/main.c) that **Mr. Lam** gave me, but turns out it was for the wrong chip 🤦. Anyways, so I'm using [this source code](https://www.electro-tech-online.com/threads/adxl345-accelerometer-and-18f4550-in-hi-tech-c.140017/) now, which isn't even for the exact chip but like it's close enough so we pray. A lot of the code had to do with utilizing an LCD which I wasn't using, but it ended up making the code very hard to read and organize. I'm mostly refreshed on how the wires in a breadboard work, so testing should become much easier.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Progress:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I've hooked up all the wires via breadboard to start testing my accelerometer with the UBMP4  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - After deleting chunks, moving functions and loops around, and getting Mr. Lam to help me with the many errors, I managed to 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; successfully download new code into my UBMP4
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Setbacks and Concerns:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I've set up a test program where the lights will display the average acceleration on the x-axis, however none of the lights are turning  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on, meaning the accelerometer isn't reading anything  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I'm not sure whether the accelerometer not sending a reading is due to me wiring wrong- maybe the resisters are too high and I'm  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not getting enough current through, or if it has to due with the source code being incompatible with my chip (the code is for a  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [PIC16F628A](https://www.alldatasheet.com/view.jsp?Searchword=Pic16f628a%20datasheet&gclid=Cj0KCQjwnNyUBhCZARIsAI9AYlFdjTxLohPIH0l4tM570dCIUa3Gejd3cUhEcAqv5xmyo7Jl7S9FhbUaAvfwEALw_wcB) while I have the [PIC16F1459](http://ww1.microchip.com/downloads/en/devicedoc/40001639b.pdf))  
+
+<img src="https://user-images.githubusercontent.com/99211784/171536980-f597f673-ac48-41a4-98dd-20bfa1ad599e.JPG" width="100" />
+
