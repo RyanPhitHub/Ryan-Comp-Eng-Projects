@@ -62,7 +62,7 @@ unsigned char red;
 unsigned char green;
 unsigned char blue;
 // Macros 
-#define lightSpeed 10
+#define lightSpeed 2
 
 
 //Functions
