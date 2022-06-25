@@ -51,5 +51,20 @@ Well.... its been a while since I've updated this journal, but that doesn't mean
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Worried about how to get the accelerometer working, since the code doesn't work, and it even impedes on my speaker code  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Since there's going to be multiple LEDs wired together, I'm worried about how durable those wires will be  
 
-<img src="https://user-images.githubusercontent.com/99211784/173716464-bf4949cd-7022-4c35-95be-df82bb7fade5.JPG" width="100" /> <img src="https://user-images.githubusercontent.com/99211784/173716618-a5181b4c-918c-43e3-91f1-db69aa5025b3.JPG" width="100" />
+<img src="https://user-images.githubusercontent.com/99211784/173716464-bf4949cd-7022-4c35-95be-df82bb7fade5.JPG" width="100" /> <img src="https://user-images.githubusercontent.com/99211784/173716618-a5181b4c-918c-43e3-91f1-db69aa5025b3.JPG" width="100" />  
+### Day 5: June. 25, 2022  
+So, it's been almost 2 weeks, but hey, I have good news this time. So, those singular LEDs I've been working with? I ditched them. The quality was so horrible, and they kept breaking or getting fried. Instead I just opted to spend $15 on a decent [LED strip](https://www.amazon.ca/BTF-LIGHTING-Flexible-Individually-Addressable-Waterproof/dp/B01CDTED80/ref=sr_1_1_sspa?crid=1DUEXK62V4459&keywords=ws2812b%2Bled%2Bstrip&qid=1655774749&sprefix=ws2812%2Caps%2C90&sr=8-1-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExV0U4UktEWlNXMkNTJmVuY3J5cHRlZElkPUEwNDUwMzgxRE1QTUdaNDBBWjVNJmVuY3J5cHRlZEFkSWQ9QTAxMjExMjcxWlRPQTVRTjdWT0FOJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ&th=1). These new strips also actually follow the WS2812 protocol (the protocol the source code was made for), so when I light up a bunch of them, they each show the intended colour; the original singular LEDs didn't follow the same protocol, so when I lit up multiple of them, the bits for each colour didn't settle in each light properly. Also, it turns out that 1 3.7V battery can power the blade for awhile so I won't need to rewire the battery pack, I'll just short 1 end and have it function as a 1-cell battery. My sensei Zsolt is working on 3D-printing me a hilt for my blade. I also tore out resistor 3 and 5 since they are connected to the specific pins for I<sup>2</sup>C devices- so I'm going to try out the accelerometer again :D, I'm not too worried about it though since I can always revert back to my ambient light sensor.  I've also opted out of using macros that represent [chromatic notes](https://en.wikipedia.org/wiki/Chromaticism#:~:text=A%20chromatic%20note%20is%20one,chromatic%20notes%2C%20create%20chromatic%20intervals.), and instead just used raw numbers since they are easier to increase/decrease (increasing a note period from 5-10 is much easier than increasing E4 to C5, especially in a loop).
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Progress:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - LED lights phase on and off, and are synced with saberOn and saberOff functions  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I put the LEDs into a plastic rod thing (see image below) so now it looks like an actual blade  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I coded the saber to have different colour options (blue, green, red, purple, yellow, and white)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Soldered the 2nd speaker and LED blade to my board as well as pins through resistor 3 and 5 for my accelerometer  
+
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Setbacks and Concerns:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - I found some example I<sup>2</sup>C code, however it's made to be run at 32MHz so I can't use it  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Zsolt may forget to make my hilt, so I'm going to try it myself  
+
+<img src="https://user-images.githubusercontent.com/99211784/175793183-06901be7-2309-485a-97d7-d5b16a12e84b.JPG" width="200" /> <img src="https://user-images.githubusercontent.com/99211784/175793209-e84409e5-25bf-4dd7-921e-008211ebae82.JPG" width="100" />  
+
+
 
