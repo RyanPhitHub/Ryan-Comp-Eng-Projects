@@ -66,5 +66,7 @@ So, it's been almost 2 weeks, but hey, I have good news this time. So, those sin
 
 <img src="https://user-images.githubusercontent.com/99211784/175793183-06901be7-2309-485a-97d7-d5b16a12e84b.JPG" width="200" /> <img src="https://user-images.githubusercontent.com/99211784/175793209-e84409e5-25bf-4dd7-921e-008211ebae82.JPG" width="100" />  
 
+Update: I think I broke my ambient sensor awhile back when I dropped my UBMP4, the old code for it isn't working, and the accelerometer still isn't co-operating, so I guess this is the end of the diary. I learned quite a lot, such as the sheer pain and suffering that computer engineers go through (probably at a much greater scale than me), through things like soldering the same thing for 50min, or programming/failing to program the accelerometer. I also learned a lot of problem solving skills when it came to coding, such as using error flags (ie. LEDs) to troubleshoot my program, as well as osciloscopes and multimeters to check the hardware. Through programing the LED blade and speakers, I've learned how to work with functions better, as well as having a better understanding of the logic of a computer (making the sound synce with the lights). I've grown much more appreciative of the people who develop source code for these devices as well, ince there was no way I could do it myself. I'm also able to comfortably use a breadboard to test components before I solder them. Through programming the LCD, I also now know how to convert numbers into strings in C. 
+
 
 
