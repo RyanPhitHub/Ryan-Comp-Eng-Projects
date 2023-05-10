@@ -1,4 +1,4 @@
-grade, favNumber, favAge, favFood
-7, 12, 5, 10
-9, 21, 12, 2
-12, 9, 1, 19
+a_Grade, b_Grade, a_Gender, b_Gender, a_Race, b_Race, a_Food, b_Food, a_Astrol, b_Astrol, a_Social, b_Social, a_Career, b_Career, a_Hobbies, b_Hobbies, Score
+12, 11, male, female, asian, black, italian, soul, pisces, virgo, extrovert, introvert, university, workforce, gaming, reading, 7.2
+9, 12, male, male, hawaiian, white, asian, middleaastern, leo, taurus, ambivert, ambivert, workforce, college, exercise/sports, reading, 8.2
+
