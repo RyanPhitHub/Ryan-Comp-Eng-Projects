@@ -24,5 +24,9 @@
 > - Gaining a better understanding of how workflows can use APIs to create things like bots on Discord
 > - Writing and using some features of Spotify's API- still can't figure out how to request my own track data
 > - Gained further insight on how I should tackle my problems- looking into the error messages, specific fields, etc.
+> - Formatting and using http request nodes for post and get requests
 > - Learning to take advantage of the debugg node
 
+### FInal thoughts:
+
+#### This is one of the projects I'm more frustrated about, since it feels the most like I've reached a dead end. I need to improve my ability to dive deeper and comprehend what it is that isn't working in my program. I hate that I wasn't able to get past the first step and just get a name of my top track. However, I'm happy that I finally had an assignment where I didn't compromise my project for the sake of getting it done- I'm happy I stuck with my idea to the end, even if the chances of me pulling it off were sad at best.
